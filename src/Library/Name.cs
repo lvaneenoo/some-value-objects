@@ -8,10 +8,7 @@ public readonly struct Name : IComparable<Name>, IEquatable<Name>
 
     private readonly string? _value;
 
-    private Name(string value)
-    {
-        _value = value;
-    }
+    private Name(string value) => _value = value;
 
     public static Name Parse(string s)
     {

@@ -9,10 +9,7 @@ public readonly struct CountryCode : IComparable<CountryCode>, IEquatable<Countr
 
     private readonly string? _value;
 
-    private CountryCode(string value)
-    {
-        _value = value;
-    }
+    private CountryCode(string value) => _value = value;
 
     public static CountryCode Parse(string s)
     {
