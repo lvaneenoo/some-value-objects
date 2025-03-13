@@ -14,14 +14,8 @@ public class StringThatHasInvalidFormat
     }
 
     [TestMethod]
-    public void ShouldNotSetResult()
-    {
-        Assert.AreEqual(CountryCode.Unknown, _result);
-    }
+    public void ShouldNotSetResult() => Assert.AreEqual(CountryCode.Unknown, _result);
 
     [TestMethod]
-    public void ShouldReturnFalse()
-    {
-        Assert.IsFalse(_returnValue);
-    }
+    public void ShouldReturnFalse() => Assert.IsFalse(_returnValue);
 }

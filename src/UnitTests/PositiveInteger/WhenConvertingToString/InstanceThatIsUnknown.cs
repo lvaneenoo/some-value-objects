@@ -6,8 +6,5 @@ namespace PositiveIntegerTests.WhenConvertingToString;
 public class InstanceThatIsUnknown
 {
     [TestMethod]
-    public void ShouldReturnUnknown()
-    {
-        Assert.AreEqual("Unknown", PositiveInteger.Unknown.ToString());
-    }
+    public void ShouldReturnUnknown() => Assert.AreEqual("Unknown", PositiveInteger.Unknown.ToString());
 }

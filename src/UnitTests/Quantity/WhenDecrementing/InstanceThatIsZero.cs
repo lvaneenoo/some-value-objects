@@ -20,8 +20,5 @@ public class InstanceThatIsZero
     }
 
     [TestMethod]
-    public void ShouldThrowInvalidOperationException()
-    {
-        Assert.IsNotNull(_exception);
-    }
+    public void ShouldThrowInvalidOperationException() => Assert.IsNotNull(_exception);
 }

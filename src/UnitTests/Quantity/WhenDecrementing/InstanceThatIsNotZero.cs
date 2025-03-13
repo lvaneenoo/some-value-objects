@@ -15,8 +15,5 @@ public class InstanceThatIsNotZero
     }
 
     [TestMethod]
-    public void ShouldReturnDecrementedInstance()
-    {
-        Assert.AreEqual(Quantity.Zero, _returnValue);
-    }
+    public void ShouldReturnDecrementedInstance() => Assert.AreEqual(Quantity.Zero, _returnValue);
 }

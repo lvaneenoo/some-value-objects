@@ -20,8 +20,5 @@ public class StringThatIsTooLong
     }
 
     [TestMethod]
-    public void ShouldThrowFormatException()
-    {
-        Assert.IsNotNull(_exception);
-    }
+    public void ShouldThrowFormatException() => Assert.IsNotNull(_exception);
 }

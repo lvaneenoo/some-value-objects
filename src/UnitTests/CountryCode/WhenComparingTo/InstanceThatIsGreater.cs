@@ -15,8 +15,5 @@ public class InstanceThatIsGreater
     }
 
     [TestMethod]
-    public void ShouldReturnMinusOne()
-    {
-        Assert.AreEqual(-1, _returnValue);
-    }
+    public void ShouldReturnMinusOne() => Assert.AreEqual(-1, _returnValue);
 }

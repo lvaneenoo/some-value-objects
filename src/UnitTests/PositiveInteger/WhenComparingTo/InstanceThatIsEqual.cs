@@ -6,8 +6,5 @@ namespace PositiveIntegerTests.WhenComparingTo;
 public class InstanceThatIsEqual
 {
     [TestMethod]
-    public void ShouldReturnZero()
-    {
-        Assert.AreEqual(0, PositiveInteger.Unknown.CompareTo(PositiveInteger.Unknown));
-    }
+    public void ShouldReturnZero() => Assert.AreEqual(0, PositiveInteger.Unknown.CompareTo(PositiveInteger.Unknown));
 }

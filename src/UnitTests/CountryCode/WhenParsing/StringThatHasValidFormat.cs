@@ -13,8 +13,5 @@ public class StringThatHasValidFormat
     }
 
     [TestMethod]
-    public void ShouldReturnInstance()
-    {
-        Assert.IsNotNull(_sut);
-    }
+    public void ShouldReturnInstance() => Assert.IsNotNull(_sut);
 }

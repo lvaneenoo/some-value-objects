@@ -15,8 +15,5 @@ public class InstanceThatIsEqual
     }
 
     [TestMethod]
-    public void ShouldReturnZero()
-    {
-        Assert.AreEqual(0, _returnValue);
-    }
+    public void ShouldReturnZero() => Assert.AreEqual(0, _returnValue);
 }

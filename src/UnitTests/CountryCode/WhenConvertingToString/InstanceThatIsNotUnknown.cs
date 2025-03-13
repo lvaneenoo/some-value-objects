@@ -17,8 +17,5 @@ public class InstanceThatIsNotUnknown
     }
 
     [TestMethod]
-    public void ShouldReturnValue()
-    {
-        Assert.AreEqual(_value, _returnValue);
-    }
+    public void ShouldReturnValue() => Assert.AreEqual(_value, _returnValue);
 }

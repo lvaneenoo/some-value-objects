@@ -6,8 +6,5 @@ namespace PositiveIntegerTests.WhenDeterminingEquality;
 public class BetweenUnknownAndDefault
 {
     [TestMethod]
-    public void ShouldReturnTrue()
-    {
-        Assert.IsTrue(PositiveInteger.Unknown.Equals(new PositiveInteger()));
-    }
+    public void ShouldReturnTrue() => Assert.IsTrue(PositiveInteger.Unknown.Equals(new PositiveInteger()));
 }

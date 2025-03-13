@@ -14,14 +14,8 @@ public class StringThatHasValidFormat
     }
 
     [TestMethod]
-    public void ShouldReturnTrue()
-    {
-        Assert.IsTrue(_returnValue);
-    }
+    public void ShouldReturnTrue() => Assert.IsTrue(_returnValue);
 
     [TestMethod]
-    public void ShouldSetResult()
-    {
-        Assert.AreNotEqual(CountryCode.Unknown, _result);
-    }
+    public void ShouldSetResult() => Assert.AreNotEqual(CountryCode.Unknown, _result);
 }

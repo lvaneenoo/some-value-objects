@@ -6,8 +6,5 @@ namespace QuantityTests.WhenConvertingToString;
 public class OfInstance
 {
     [TestMethod]
-    public void ShouldReturnValue()
-    {
-        Assert.AreEqual("0", Quantity.Zero.ToString());
-    }
+    public void ShouldReturnValue() => Assert.AreEqual("0", Quantity.Zero.ToString());
 }

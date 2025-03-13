@@ -20,8 +20,5 @@ public class StringThatIsEmpty
     }
 
     [TestMethod]
-    public void ShouldThrowFormatException()
-    {
-        Assert.IsNotNull(_exception);
-    }
+    public void ShouldThrowFormatException() => Assert.IsNotNull(_exception);
 }

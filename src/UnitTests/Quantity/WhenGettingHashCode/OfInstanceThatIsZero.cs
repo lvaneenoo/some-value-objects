@@ -6,8 +6,5 @@ namespace QuantityTests.WhenGettingHashCode;
 public class OfInstanceThatIsZero
 {
     [TestMethod]
-    public void ShouldReturnZero()
-    {
-        Assert.AreEqual(0, Quantity.Zero.GetHashCode());
-    }
+    public void ShouldReturnZero() => Assert.AreEqual(0, Quantity.Zero.GetHashCode());
 }

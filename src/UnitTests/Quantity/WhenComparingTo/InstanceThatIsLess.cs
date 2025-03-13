@@ -15,8 +15,5 @@ public class InstanceThatIsLess
     }
 
     [TestMethod]
-    public void ShouldReturnOne()
-    {
-        Assert.AreEqual(1, _returnValue);
-    }
+    public void ShouldReturnOne() => Assert.AreEqual(1, _returnValue);
 }

@@ -17,8 +17,5 @@ public class OfInstanceThatIsNotZero
     }
 
     [TestMethod]
-    public void ShouldReturnHashCode()
-    {
-        Assert.AreEqual(_value.GetHashCode(), _returnValue);
-    }
+    public void ShouldReturnHashCode() => Assert.AreEqual(_value.GetHashCode(), _returnValue);
 }

@@ -12,7 +12,7 @@ public class InstanceThatIsMaxValue
         try
         {
             var sut = Quantity.FromInt32(int.MaxValue);
-            
+
             sut.Increment();
         }
         catch (InvalidOperationException ex)
@@ -22,8 +22,5 @@ public class InstanceThatIsMaxValue
     }
 
     [TestMethod]
-    public void ShouldThrowInvalidOperationException()
-    {
-        Assert.IsNotNull(_exception);
-    }
+    public void ShouldThrowInvalidOperationException() => Assert.IsNotNull(_exception);
 }

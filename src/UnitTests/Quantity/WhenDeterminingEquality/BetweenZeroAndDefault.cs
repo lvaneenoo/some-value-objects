@@ -6,8 +6,5 @@ namespace QuantityTests.WhenDeterminingEquality;
 public class BetweenZeroAndDefault
 {
     [TestMethod]
-    public void ShouldReturnTrue()
-    {
-        Assert.IsTrue(Quantity.Zero.Equals(new Quantity()));
-    }
+    public void ShouldReturnTrue() => Assert.IsTrue(Quantity.Zero.Equals(new Quantity()));
 }
