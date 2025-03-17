@@ -15,7 +15,7 @@ public readonly struct CountryCode : IComparable<CountryCode>, IEquatable<Countr
     {
         if (Regex.IsMatch(s, "[A-Z]{2}"))
         {
-            return new CountryCode(s);
+            return new(s);
         }
 
         throw new FormatException();
@@ -25,7 +25,7 @@ public readonly struct CountryCode : IComparable<CountryCode>, IEquatable<Countr
     {
         if (Regex.IsMatch(s, "[A-Z]{2}"))
         {
-            result = new CountryCode(s);
+            result = new(s);
             return true;
         }
 
@@ -35,12 +35,22 @@ public readonly struct CountryCode : IComparable<CountryCode>, IEquatable<Countr
 
     public int CompareTo(CountryCode other)
     {
+        if (other._value == null && _value == null)
+        {
+            return 0;
+        }
+
         if (other._value == null)
         {
             return 1;
         }
 
-        return _value == null ? -1 : _value.CompareTo(other._value);
+        if (_value == null)
+        {
+            return -1;
+        }
+
+        return _value.CompareTo(other._value);
     }
 
     public bool Equals(CountryCode other) => _value == other._value;

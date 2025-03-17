@@ -9,9 +9,9 @@ public class InstanceThatIsLess
 
     public InstanceThatIsLess()
     {
-        var code = CountryCode.Parse("AB");
+        var sut = CountryCode.Parse("AA");
 
-        _returnValue = code.CompareTo(CountryCode.Parse("AA"));
+        _returnValue = sut.CompareTo(CountryCode.Unknown);
     }
 
     [TestMethod]
