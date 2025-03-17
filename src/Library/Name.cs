@@ -34,12 +34,22 @@ public readonly struct Name : IComparable<Name>, IEquatable<Name>
 
     public int CompareTo(Name other)
     {
+        if (other._value == null && _value == null)
+        {
+            return 0;
+        }
+
         if (other._value == null)
         {
             return 1;
         }
 
-        return _value == null ? -1 : _value.CompareTo(other._value);
+        if (_value == null)
+        {
+            return -1;
+        }
+
+        return _value.CompareTo(other._value);
     }
 
     public bool Equals(Name other) => _value == other._value;
