@@ -35,14 +35,9 @@ public readonly struct CountryCode : IComparable<CountryCode>, IEquatable<Countr
 
     public int CompareTo(CountryCode other)
     {
-        if (other._value == null && _value == null)
+        if (_value == null && other._value == null)
         {
             return 0;
-        }
-
-        if (other._value == null)
-        {
-            return 1;
         }
 
         if (_value == null)
@@ -50,7 +45,7 @@ public readonly struct CountryCode : IComparable<CountryCode>, IEquatable<Countr
             return -1;
         }
 
-        return _value.CompareTo(other._value);
+        return other._value == null ? 1 : _value.CompareTo(other._value);
     }
 
     public bool Equals(CountryCode other) => _value == other._value;
