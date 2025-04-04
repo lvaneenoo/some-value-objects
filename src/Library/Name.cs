@@ -33,19 +33,12 @@ public readonly struct Name : IComparable<Name>, IEquatable<Name>
     }
 
     public int CompareTo(Name other)
-    {
-        if (_value == null && other._value == null)
+        => _value switch
         {
-            return 0;
-        }
-
-        if (_value == null)
-        {
-            return -1;
-        }
-
-        return other._value == null ? 1 : _value.CompareTo(other._value);
-    }
+            null when other._value == null => 0,
+            null => -1,
+            _ => other._value == null ? 1 : _value.CompareTo(other._value)
+        };
 
     public bool Equals(Name other) => _value == other._value;
     public override bool Equals([NotNullWhen(true)] object? obj) => obj is Name other && Equals(other);
