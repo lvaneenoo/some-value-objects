@@ -14,10 +14,10 @@ public readonly struct Quantity : IComparable<Quantity>, IEquatable<Quantity>
     {
         if (value < 0)
         {
-            throw new ArgumentOutOfRangeException(nameof(value), "[PLACEHOLDER]");
+            throw new ArgumentOutOfRangeException(nameof(value), "The value must be a positive number or zero.");
         }
 
-        return new Quantity(value);
+        return new(value);
     }
 
     public int CompareTo(Quantity other) => _value.CompareTo(other._value);

@@ -14,7 +14,7 @@ public readonly struct PositiveInteger : IComparable<PositiveInteger>, IEquatabl
     {
         if (value < 1)
         {
-            throw new ArgumentOutOfRangeException(nameof(value), "[PLACEHOLDER]");
+            throw new ArgumentOutOfRangeException(nameof(value), "The value must be a positive number.");
         }
 
         return new(value);
