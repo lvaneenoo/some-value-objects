@@ -20,7 +20,16 @@ jobs:
       uses: actions/setup-dotnet@v4
       with:
         dotnet-version: 8.0.x
-    - name: Restore dependencies
+        
+    - name: Restore dependencies library
       run: dotnet restore ./src/Library/
-    - name: Build
+    - name: Build library
       run: dotnet build --no-restore ./src/Library/
+      
+    - name: Restore dependencies unit tests
+      run: dotnet restore ./src/UnitTests/
+    - name: Build unit tests
+      run: dotnet build --no-restore ./src/UnitTests/
+      
+    - name: Test
+      run: dotnet test --no-build --verbosity normal ./src/UnitTests/
