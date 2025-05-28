@@ -33,5 +33,5 @@ public readonly struct PositiveInteger : IComparable<PositiveInteger>, IEquatabl
     public static bool operator <=(PositiveInteger a, PositiveInteger b) => a.CompareTo(b) <= 0;
     public static bool operator >=(PositiveInteger a, PositiveInteger b) => a.CompareTo(b) >= 0;
 
-    public static explicit operator int(PositiveInteger a) => a._value;
+    public static implicit operator int(PositiveInteger a) => a._value;
 }

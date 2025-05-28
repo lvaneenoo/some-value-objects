@@ -51,4 +51,6 @@ public readonly struct Name : IComparable<Name>, IEquatable<Name>
     public static bool operator >(Name a, Name b) => a.CompareTo(b) > 0;
     public static bool operator <=(Name a, Name b) => a.CompareTo(b) <= 0;
     public static bool operator >=(Name a, Name b) => a.CompareTo(b) >= 0;
+
+    public static implicit operator string(Name a) => a.ToString();
 }

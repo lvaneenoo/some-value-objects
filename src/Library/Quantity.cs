@@ -55,5 +55,5 @@ public readonly struct Quantity : IComparable<Quantity>, IEquatable<Quantity>
     public static bool operator <=(Quantity a, Quantity b) => a.CompareTo(b) <= 0;
     public static bool operator >=(Quantity a, Quantity b) => a.CompareTo(b) >= 0;
 
-    public static explicit operator int(Quantity a) => a._value;
+    public static implicit operator int(Quantity a) => a._value;
 }

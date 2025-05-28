@@ -34,5 +34,5 @@ public readonly struct FractionalQuantity : IComparable<FractionalQuantity>, IEq
     public static bool operator <=(FractionalQuantity a, FractionalQuantity b) => a.CompareTo(b) <= 0;
     public static bool operator >=(FractionalQuantity a, FractionalQuantity b) => a.CompareTo(b) >= 0;
 
-    public static explicit operator decimal(FractionalQuantity a) => a._value;
+    public static implicit operator decimal(FractionalQuantity a) => a._value;
 }

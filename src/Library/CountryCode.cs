@@ -52,4 +52,6 @@ public readonly struct CountryCode : IComparable<CountryCode>, IEquatable<Countr
     public static bool operator >(CountryCode a, CountryCode b) => a.CompareTo(b) > 0;
     public static bool operator <=(CountryCode a, CountryCode b) => a.CompareTo(b) <= 0;
     public static bool operator >=(CountryCode a, CountryCode b) => a.CompareTo(b) >= 0;
+
+    public static implicit operator string(CountryCode a) => a.ToString();
 }

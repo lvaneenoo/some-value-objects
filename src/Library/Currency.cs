@@ -52,4 +52,6 @@ public readonly struct Currency : IComparable<Currency>, IEquatable<Currency>
     public static bool operator >(Currency a, Currency b) => a.CompareTo(b) > 0;
     public static bool operator <=(Currency a, Currency b) => a.CompareTo(b) <= 0;
     public static bool operator >=(Currency a, Currency b) => a.CompareTo(b) >= 0;
+
+    public static implicit operator string(Currency a) => a.ToString();
 }
