@@ -14,10 +14,22 @@ public readonly struct PositiveInteger : IComparable<PositiveInteger>, IEquatabl
     {
         if (value < 1)
         {
-            throw new ArgumentOutOfRangeException(nameof(value), "The value must be a positive number.");
+            throw new ArgumentOutOfRangeException(nameof(value), $"The {nameof(value)} must be a positive number.");
         }
 
         return new(value);
+    }
+
+    public static bool TryParse(string s, out PositiveInteger result)
+    {
+        if (int.TryParse(s, out int value) && value > 0)
+        {
+            result = new(value);
+            return true;
+        }
+
+        result = Unknown;
+        return false;
     }
 
     public int CompareTo(PositiveInteger other) => _value.CompareTo(other._value);
