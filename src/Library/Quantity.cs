@@ -4,7 +4,7 @@ namespace Common;
 
 public readonly struct Quantity : IComparable<Quantity>, IEquatable<Quantity>
 {
-    public static readonly Quantity Zero = new();
+    public static readonly Quantity Zero;
 
     private readonly int _value;
 
@@ -17,7 +17,7 @@ public readonly struct Quantity : IComparable<Quantity>, IEquatable<Quantity>
             throw new ArgumentOutOfRangeException(nameof(value), "The value must be a positive number or zero.");
         }
 
-        return new(value);
+        return new Quantity(value);
     }
 
     public int CompareTo(Quantity other) => _value.CompareTo(other._value);
@@ -29,7 +29,7 @@ public readonly struct Quantity : IComparable<Quantity>, IEquatable<Quantity>
             throw new InvalidOperationException();
         }
 
-        return new(_value - 1);
+        return new Quantity(_value - 1);
     }
 
     public bool Equals(Quantity other) => _value == other._value;
@@ -43,7 +43,7 @@ public readonly struct Quantity : IComparable<Quantity>, IEquatable<Quantity>
             throw new InvalidOperationException();
         }
 
-        return new(_value + 1);
+        return new Quantity(_value + 1);
     }
 
     public override string ToString() => _value.ToString();

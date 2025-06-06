@@ -18,7 +18,7 @@ public readonly struct FractionalQuantity : IComparable<FractionalQuantity>, IEq
                 $"The {nameof(value)} must be a positive number or zero.");
         }
 
-        return new(value);
+        return new FractionalQuantity(value);
     }
 
     public int CompareTo(FractionalQuantity other) => _value.CompareTo(other._value);

@@ -17,14 +17,14 @@ public readonly struct PositiveInteger : IComparable<PositiveInteger>, IEquatabl
             throw new ArgumentOutOfRangeException(nameof(value), $"The {nameof(value)} must be a positive number.");
         }
 
-        return new(value);
+        return new PositiveInteger(value);
     }
 
     public static bool TryParse(string s, out PositiveInteger result)
     {
         if (int.TryParse(s, out int value) && value > 0)
         {
-            result = new(value);
+            result = new PositiveInteger(value);
             return true;
         }
 

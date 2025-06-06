@@ -15,7 +15,7 @@ public readonly struct Currency : IComparable<Currency>, IEquatable<Currency>
     {
         if (Regex.IsMatch(s, "[A-Z]{3}"))
         {
-            return new(s);
+            return new Currency(s);
         }
 
         throw new FormatException();
@@ -25,7 +25,7 @@ public readonly struct Currency : IComparable<Currency>, IEquatable<Currency>
     {
         if (Regex.IsMatch(s, "[A-Z]{3}"))
         {
-            result = new(s);
+            result = new Currency(s);
             return true;
         }
 
