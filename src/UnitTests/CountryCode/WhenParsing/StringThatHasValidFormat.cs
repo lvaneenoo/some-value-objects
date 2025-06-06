@@ -2,9 +2,15 @@ using Common;
 
 namespace CountryCodeTests.WhenParsing;
 
-[TestClass]
 public class StringThatHasValidFormat
 {
-    [TestMethod]
-    public void ShouldReturnInstance() => Assert.IsNotNull(CountryCode.Parse("AA"));
+    [Theory]
+    [InlineData("AA")]
+    public void ShouldReturnInstance(string s)
+    {
+        CountryCode sut = CountryCode.Parse(s);
+
+        Assert.Equal(s.GetHashCode(), sut.GetHashCode());
+        Assert.Equal(s, sut.ToString());
+    }
 }

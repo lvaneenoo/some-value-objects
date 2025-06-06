@@ -2,16 +2,15 @@ using Common;
 
 namespace NameTests.WhenParsing;
 
-[TestClass]
 public class StringThatHasValidFormat
 {
-    private readonly Name _sut;
-
-    public StringThatHasValidFormat()
+    [Theory]
+    [InlineData("A")]
+    public void ShouldReturnInstance(string s)
     {
-        _sut = Name.Parse("A");
-    }
+        Name sut = Name.Parse(s);
 
-    [TestMethod]
-    public void ShouldReturnInstance() => Assert.IsNotNull(_sut);
+        Assert.Equal(s.GetHashCode(), sut.GetHashCode());
+        Assert.Equal(s, sut.ToString());
+    }
 }

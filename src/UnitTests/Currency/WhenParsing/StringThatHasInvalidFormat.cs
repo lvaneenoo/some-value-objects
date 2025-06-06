@@ -2,23 +2,12 @@ using Common;
 
 namespace CurrencyTests.WhenParsing;
 
-[TestClass]
 public class StringThatHasInvalidFormat
 {
-    private readonly FormatException? _exception;
-
-    public StringThatHasInvalidFormat()
+    [Theory]
+    [InlineData("")]
+    public void ShouldThrowFormatException(string s)
     {
-        try
-        {
-            Currency.Parse("");
-        }
-        catch (FormatException ex)
-        {
-            _exception = ex;
-        }
+        Assert.Throws<FormatException>(() => _ = Currency.Parse(s));
     }
-
-    [TestMethod]
-    public void ShouldThrowFormatException() => Assert.IsNotNull(_exception);
 }

@@ -2,9 +2,15 @@ using Common;
 
 namespace CurrencyTests.WhenParsing;
 
-[TestClass]
 public class StringThatHasValidFormat
 {
-    [TestMethod]
-    public void ShouldReturnInstance() => Assert.IsNotNull(Currency.Parse("AAA"));
+    [Theory]
+    [InlineData("AAA")]
+    public void ShouldReturnInstance(string s)
+    {
+        Currency sut = Currency.Parse(s);
+
+        Assert.Equal(s.GetHashCode(), sut.GetHashCode());
+        Assert.Equal(s, sut.ToString());
+    }
 }
