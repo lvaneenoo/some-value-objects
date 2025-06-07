@@ -1,8 +1,8 @@
 using Common;
 
-namespace NameTests.WhenParsing;
+namespace NameTests.WhenCreatingFromString;
 
-public class StringThatHasInvalidFormat
+public class ValueThatHasInvalidFormat
 {
     public static IEnumerable<object[]> CreateArgs()
     {
@@ -19,8 +19,8 @@ public class StringThatHasInvalidFormat
 
     [Theory]
     [MemberData(nameof(CreateArgs))]
-    public void ShouldThrowFormatException(string s)
+    public void ShouldThrowFormatException(string value)
     {
-        Assert.Throws<FormatException>(() => _ = Name.Parse(s));
+        Assert.Throws<FormatException>(() => _ = Name.FromString(value));
     }
 }

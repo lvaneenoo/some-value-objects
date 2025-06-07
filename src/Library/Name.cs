@@ -10,26 +10,14 @@ public readonly struct Name : IComparable<Name>, IEquatable<Name>
 
     private Name(string value) => _value = value;
 
-    public static Name Parse(string s)
+    public static Name FromString(string value)
     {
-        if (s.Trim() == "" || s.Length > 50)
+        if (value.Trim() == "" || value.Length > 50)
         {
             throw new FormatException();
         }
 
-        return new Name(s);
-    }
-
-    public static bool TryParse(string s, out Name result)
-    {
-        if (s.Trim() == "" || s.Length > 50)
-        {
-            result = Unknown;
-            return false;
-        }
-
-        result = new Name(s);
-        return true;
+        return new Name(value);
     }
 
     public int CompareTo(Name other)
