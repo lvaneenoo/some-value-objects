@@ -7,30 +7,48 @@ public readonly struct Currency : IComparable<Currency>, IEquatable<Currency>
 {
     public static readonly Currency Unknown;
 
+    private static readonly HashSet<string> AllowedValues =
+    [
+        "EUR",
+        "GBP",
+        "USD"
+    ];
+
     private readonly string? _value;
 
     private Currency(string value) => _value = value;
 
     public static Currency Parse(string s)
     {
-        if (Regex.IsMatch(s, "[A-Z]{3}"))
+        if (!Regex.IsMatch(s, "[A-Z]{3}"))
         {
-            return new Currency(s);
+            throw new FormatException();
         }
 
-        throw new FormatException();
+        if (!AllowedValues.Contains(s))
+        {
+            throw new ArgumentOutOfRangeException();
+        }
+
+        return new Currency(s);
     }
 
     public static bool TryParse(string s, out Currency result)
     {
-        if (Regex.IsMatch(s, "[A-Z]{3}"))
+        if (!Regex.IsMatch(s, "[A-Z]{3}"))
         {
-            result = new Currency(s);
-            return true;
+            result = Unknown;
+            return false;
         }
 
-        result = Unknown;
-        return false;
+        if (!AllowedValues.Contains(s))
+        {
+            result = Unknown;
+            return false;
+        }
+
+        result = new Currency(s);
+        return true;
     }
 
     public int CompareTo(Currency other)
