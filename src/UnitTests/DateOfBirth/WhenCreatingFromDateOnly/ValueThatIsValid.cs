@@ -4,23 +4,17 @@ namespace DateOfBirthTests.WhenCreatingFromDateOnly;
 
 public class ValueThatIsValid
 {
-    public static IEnumerable<object[]> CreateArgs()
-    {
-        yield return new object[]
-        {
-            MinValue
-        };
-    }
-
     private static readonly DateOnly MinValue = new(1925, 1, 1);
+
+    public static TheoryData<DateOnly> CreateArgs() =>
+    [
+        MinValue
+    ];
 
     [Theory]
     [MemberData(nameof(CreateArgs))]
     public void ShouldReturnInstance(DateOnly value)
     {
-        DateOfBirth sut = DateOfBirth.FromDateOnly(value);
-
-        Assert.Equal(value.GetHashCode(), sut.GetHashCode());
-        Assert.Equal(value.ToString(), sut.ToString());
+        Assert.Equal(value, DateOfBirth.FromDateOnly(value));
     }
 }
