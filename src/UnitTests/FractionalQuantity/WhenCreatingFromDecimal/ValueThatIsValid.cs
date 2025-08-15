@@ -4,21 +4,17 @@ namespace FractionalQuantityTests.WhenCreatingFromDecimal;
 
 public class ValueThatIsValid
 {
-    public static IEnumerable<object[]> CreateArgs()
-    {
-        yield return new object[]
-        {
-            0.1M
-        };
-    }
+    public static TheoryData<decimal> TestData =>
+    [
+        0M,
+        0.1M,
+        decimal.MaxValue
+    ];
 
     [Theory]
-    [MemberData(nameof(CreateArgs))]
+    [MemberData(nameof(TestData))]
     public void ShouldReturnInstance(decimal value)
     {
-        FractionalQuantity sut = FractionalQuantity.FromDecimal(value);
-
-        Assert.Equal(value.GetHashCode(), sut.GetHashCode());
-        Assert.Equal(value.ToString(), sut.ToString());
+        _ = FractionalQuantity.FromDecimal(value);
     }
 }

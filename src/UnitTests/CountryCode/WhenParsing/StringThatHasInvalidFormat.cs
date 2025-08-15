@@ -6,5 +6,11 @@ public class StringThatHasInvalidFormat
 {
     [Theory]
     [InlineData("")]
-    public void ShouldThrowFormatException(string s) => Assert.Throws<FormatException>(() => CountryCode.Parse(s));
+    [InlineData("00")]
+    [InlineData("aa")]
+    [InlineData("AAA")]
+    public void ShouldThrowFormatException(string s)
+    {
+        Assert.Throws<FormatException>(() => _ = CountryCode.Parse(s));
+    }
 }

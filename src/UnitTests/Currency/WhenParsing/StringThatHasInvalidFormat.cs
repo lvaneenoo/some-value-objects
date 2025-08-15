@@ -6,5 +6,10 @@ public class StringThatHasInvalidFormat
 {
     [Theory]
     [InlineData("")]
-    public void ShouldThrowFormatException(string s) => Assert.Throws<FormatException>(() => Currency.Parse(s));
+    [InlineData("000")]
+    [InlineData("AAAA")]
+    public void ShouldThrowFormatException(string s)
+    {
+        Assert.Throws<FormatException>(() => _ = Currency.Parse(s));
+    }
 }

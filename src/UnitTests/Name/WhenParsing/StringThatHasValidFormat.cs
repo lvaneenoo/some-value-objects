@@ -6,5 +6,8 @@ public class StringThatHasValidFormat
 {
     [Theory]
     [InlineData("A")]
-    public void ShouldReturnInstance(string s) => Name.Parse(s);
+    public void ShouldReturnInstance(string s)
+    {
+        _ = Name.Parse(s);
+    }
 }

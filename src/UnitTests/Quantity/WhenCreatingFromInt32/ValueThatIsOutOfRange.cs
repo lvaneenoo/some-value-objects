@@ -5,6 +5,8 @@ namespace QuantityTests.WhenCreatingFromInt32;
 public class ValueThatIsOutOfRange
 {
     [Theory]
+    [InlineData(int.MinValue)]
+    [InlineData(-2)]
     [InlineData(-1)]
     public void ShouldThrowArgumentOutOfRangeException(int value)
     {

@@ -13,11 +13,14 @@ public sealed class Currency : IComparable<Currency>, IEquatable<Currency>
 
     private readonly string _value;
 
-    private Currency(string value) => _value = value;
+    private Currency(string value)
+    {
+        _value = value;
+    }
 
     public static Currency Parse(string s)
     {
-        if (!Regex.IsMatch(s, "[A-Z]{3}"))
+        if (!Regex.IsMatch(s, "^[A-Z]{3}$"))
         {
             throw new FormatException();
         }
@@ -32,7 +35,7 @@ public sealed class Currency : IComparable<Currency>, IEquatable<Currency>
 
     public static bool TryParse(string s, out Currency? result)
     {
-        if (!Regex.IsMatch(s, "[A-Z]{3}"))
+        if (!Regex.IsMatch(s, "^[A-Z]{3}$"))
         {
             result = null;
             return false;
@@ -56,6 +59,7 @@ public sealed class Currency : IComparable<Currency>, IEquatable<Currency>
 
     public static bool operator ==(Currency? a, Currency? b) => a is not null && a.Equals(b);
     public static bool operator !=(Currency? a, Currency? b) => !(a == b);
+
     public static bool operator <(Currency? a, Currency? b) => a is not null && a.CompareTo(b) < 0;
     public static bool operator >(Currency? a, Currency? b) => a is not null && a.CompareTo(b) > 0;
     public static bool operator <=(Currency? a, Currency? b) => a is not null && a.CompareTo(b) <= 0;

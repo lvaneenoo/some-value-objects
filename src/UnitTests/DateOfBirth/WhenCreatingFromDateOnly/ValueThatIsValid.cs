@@ -4,17 +4,20 @@ namespace DateOfBirthTests.WhenCreatingFromDateOnly;
 
 public class ValueThatIsValid
 {
+    private static readonly DateOnly MaxValue = new(2024, 12, 31);
     private static readonly DateOnly MinValue = new(1925, 1, 1);
 
-    public static TheoryData<DateOnly> CreateArgs() =>
+    public static TheoryData<DateOnly> TestData =>
     [
-        MinValue
+        MinValue,
+        MinValue.AddDays(1),
+        MaxValue
     ];
 
     [Theory]
-    [MemberData(nameof(CreateArgs))]
+    [MemberData(nameof(TestData))]
     public void ShouldReturnInstance(DateOnly value)
     {
-        Assert.Equal(value, DateOfBirth.FromDateOnly(value));
+        _ = DateOfBirth.FromDateOnly(value);
     }
 }

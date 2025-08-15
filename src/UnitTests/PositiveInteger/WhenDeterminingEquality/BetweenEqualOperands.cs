@@ -1,0 +1,15 @@
+using Common;
+
+namespace PositiveIntegerTests.WhenDeterminingEquality;
+
+public class BetweenEqualOperands
+{
+    [Theory]
+    [InlineData(1, 1)]
+    public void ShouldReturnTrue(int value1, int value2)
+    {
+        var sut = PositiveInteger.FromInt32(value1);
+
+        Assert.True(sut.Equals(PositiveInteger.FromInt32(value2)));
+    }
+}

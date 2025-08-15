@@ -4,14 +4,18 @@ namespace NameTests.WhenParsing;
 
 public class StringThatHasInvalidFormat
 {
-    public static TheoryData<string> CreateArgs()
-        =>
-        [
-            "",
-            new string(' ', 51)
-        ];
+    private const int MaxLength = 50;
+
+    public static TheoryData<string> TestData =>
+    [
+        "",
+        new string(' ', MaxLength + 1)
+    ];
 
     [Theory]
-    [MemberData(nameof(CreateArgs))]
-    public void ShouldThrowFormatException(string s) => Assert.Throws<FormatException>(() => Name.Parse(s));
+    [MemberData(nameof(TestData))]
+    public void ShouldThrowFormatException(string s)
+    {
+        Assert.Throws<FormatException>(() => _ = Name.Parse(s));
+    }
 }

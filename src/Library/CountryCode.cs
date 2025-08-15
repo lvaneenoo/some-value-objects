@@ -6,11 +6,14 @@ public sealed class CountryCode : IComparable<CountryCode>, IEquatable<CountryCo
 {
     private readonly string _value;
 
-    private CountryCode(string value) => _value = value;
+    private CountryCode(string value)
+    {
+        _value = value;
+    }
 
     public static CountryCode Parse(string s)
     {
-        if (!Regex.IsMatch(s, "[A-Z]{2}"))
+        if (!Regex.IsMatch(s, "^[A-Z]{2}$"))
         {
             throw new FormatException();
         }
@@ -20,7 +23,7 @@ public sealed class CountryCode : IComparable<CountryCode>, IEquatable<CountryCo
 
     public static bool TryParse(string s, out CountryCode? result)
     {
-        if (!Regex.IsMatch(s, "[A-Z]{2}"))
+        if (!Regex.IsMatch(s, "^[A-Z]{2}$"))
         {
             result = null;
             return false;
@@ -38,6 +41,7 @@ public sealed class CountryCode : IComparable<CountryCode>, IEquatable<CountryCo
 
     public static bool operator ==(CountryCode? a, CountryCode? b) => a is not null && a.Equals(b);
     public static bool operator !=(CountryCode? a, CountryCode? b) => !(a == b);
+
     public static bool operator <(CountryCode? a, CountryCode? b) => a is not null && a.CompareTo(b) < 0;
     public static bool operator >(CountryCode? a, CountryCode? b) => a is not null && a.CompareTo(b) > 0;
     public static bool operator <=(CountryCode? a, CountryCode? b) => a is not null && a.CompareTo(b) <= 0;

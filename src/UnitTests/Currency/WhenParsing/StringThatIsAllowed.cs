@@ -6,5 +6,8 @@ public class StringThatIsAllowed
 {
     [Theory]
     [InlineData("EUR")]
-    public void ShouldReturnInstance(string s) => Currency.Parse(s);
+    public void ShouldReturnInstance(string s)
+    {
+        _ = Currency.Parse(s);
+    }
 }
