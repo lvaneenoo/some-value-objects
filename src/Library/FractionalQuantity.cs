@@ -8,15 +8,14 @@ public readonly struct FractionalQuantity : IComparable<FractionalQuantity>, IEq
 
     private readonly decimal _value;
 
-    private FractionalQuantity(decimal value) => _value = value;
+    private FractionalQuantity(decimal value)
+    {
+        _value = value;
+    }
 
     public static FractionalQuantity FromDecimal(decimal value)
     {
-        if (value < 0)
-        {
-            throw new ArgumentOutOfRangeException(nameof(value),
-                $"The {nameof(value)} must be a positive number or zero.");
-        }
+        ArgumentOutOfRangeException.ThrowIfNegative(value, nameof(value));
 
         return new FractionalQuantity(value);
     }
@@ -29,6 +28,7 @@ public readonly struct FractionalQuantity : IComparable<FractionalQuantity>, IEq
 
     public static bool operator ==(FractionalQuantity a, FractionalQuantity b) => a.Equals(b);
     public static bool operator !=(FractionalQuantity a, FractionalQuantity b) => !(a == b);
+
     public static bool operator <(FractionalQuantity a, FractionalQuantity b) => a.CompareTo(b) < 0;
     public static bool operator >(FractionalQuantity a, FractionalQuantity b) => a.CompareTo(b) > 0;
     public static bool operator <=(FractionalQuantity a, FractionalQuantity b) => a.CompareTo(b) <= 0;

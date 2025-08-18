@@ -7,12 +7,15 @@ public sealed class DateOfBirth : IComparable<DateOfBirth>, IEquatable<DateOfBir
 
     private readonly DateOnly _value;
 
-    private DateOfBirth(DateOnly value) => _value = value;
+    private DateOfBirth(DateOnly value)
+    {
+        _value = value;
+    }
 
     public static DateOfBirth FromDateOnly(DateOnly value)
     {
-        ArgumentOutOfRangeException.ThrowIfLessThan(value, MinValue);
-        ArgumentOutOfRangeException.ThrowIfGreaterThan(value, MaxValue);
+        ArgumentOutOfRangeException.ThrowIfLessThan(value, MinValue, nameof(value));
+        ArgumentOutOfRangeException.ThrowIfGreaterThan(value, MaxValue, nameof(value));
 
         return new DateOfBirth(value);
     }
@@ -25,6 +28,7 @@ public sealed class DateOfBirth : IComparable<DateOfBirth>, IEquatable<DateOfBir
 
     public static bool operator ==(DateOfBirth? a, DateOfBirth? b) => a is not null && a.Equals(b);
     public static bool operator !=(DateOfBirth? a, DateOfBirth? b) => !(a == b);
+
     public static bool operator <(DateOfBirth? a, DateOfBirth? b) => a is not null && a.CompareTo(b) < 0;
     public static bool operator >(DateOfBirth? a, DateOfBirth? b) => a is not null && a.CompareTo(b) > 0;
     public static bool operator <=(DateOfBirth? a, DateOfBirth? b) => a is not null && a.CompareTo(b) <= 0;

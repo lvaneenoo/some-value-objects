@@ -27,7 +27,7 @@ public sealed class Currency : IComparable<Currency>, IEquatable<Currency>
 
         if (!AllowedValues.Contains(s))
         {
-            throw new ArgumentOutOfRangeException();
+            throw new ArgumentOutOfRangeException(nameof(s));
         }
 
         return new Currency(s);

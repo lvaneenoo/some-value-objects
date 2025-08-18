@@ -6,7 +6,10 @@ public sealed class Name : IComparable<Name>, IEquatable<Name>
 
     private readonly string _value;
 
-    private Name(string value) => _value = value;
+    private Name(string value)
+    {
+        _value = value;
+    }
 
     public static Name Parse(string s)
     {
@@ -26,6 +29,7 @@ public sealed class Name : IComparable<Name>, IEquatable<Name>
 
     public static bool operator ==(Name? a, Name? b) => a is not null && a.Equals(b);
     public static bool operator !=(Name? a, Name? b) => !(a == b);
+
     public static bool operator <(Name? a, Name? b) => a is not null && a.CompareTo(b) < 0;
     public static bool operator >(Name? a, Name? b) => a is not null && a.CompareTo(b) > 0;
     public static bool operator <=(Name? a, Name? b) => a is not null && a.CompareTo(b) <= 0;

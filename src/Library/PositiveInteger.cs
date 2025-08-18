@@ -4,14 +4,14 @@ public sealed class PositiveInteger : IComparable<PositiveInteger>, IEquatable<P
 {
     private readonly int _value;
 
-    private PositiveInteger(int value) => _value = value;
+    private PositiveInteger(int value)
+    {
+        _value = value;
+    }
 
     public static PositiveInteger FromInt32(int value)
     {
-        if (value < 1)
-        {
-            throw new ArgumentOutOfRangeException(nameof(value), $"The {nameof(value)} must be a positive number.");
-        }
+        ArgumentOutOfRangeException.ThrowIfLessThan(value, 1, nameof(value));
 
         return new PositiveInteger(value);
     }
@@ -36,6 +36,7 @@ public sealed class PositiveInteger : IComparable<PositiveInteger>, IEquatable<P
 
     public static bool operator ==(PositiveInteger? a, PositiveInteger? b) => a is not null && a.Equals(b);
     public static bool operator !=(PositiveInteger? a, PositiveInteger? b) => !(a == b);
+
     public static bool operator <(PositiveInteger? a, PositiveInteger? b) => a is not null && a.CompareTo(b) < 0;
     public static bool operator >(PositiveInteger? a, PositiveInteger? b) => a is not null && a.CompareTo(b) > 0;
     public static bool operator <=(PositiveInteger? a, PositiveInteger? b) => a is not null && a.CompareTo(b) <= 0;
