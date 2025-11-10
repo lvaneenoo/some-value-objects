@@ -1,6 +1,11 @@
+using System.Diagnostics.CodeAnalysis;
+
 namespace Common;
 
-public sealed class PositiveInteger : IComparable<PositiveInteger>, IEquatable<PositiveInteger>
+public sealed class PositiveInteger
+    : IComparable<PositiveInteger>,
+      IEquatable<PositiveInteger>,
+      IParsable<PositiveInteger>
 {
     private readonly int _value;
 
@@ -16,16 +21,20 @@ public sealed class PositiveInteger : IComparable<PositiveInteger>, IEquatable<P
         return new PositiveInteger(value);
     }
 
-    public static bool TryParse(string s, out PositiveInteger? result)
+    public static PositiveInteger Parse(string s, IFormatProvider? provider) => FromInt32(int.Parse(s, provider));
+
+    public static bool TryParse([NotNullWhen(true)] string? s,
+                                IFormatProvider? provider,
+                                [MaybeNullWhen(false)] out PositiveInteger result)
     {
-        if (int.TryParse(s, out int value) && value > 0)
+        if (!int.TryParse(s, out int value) || value <= 0)
         {
-            result = new PositiveInteger(value);
-            return true;
+            result = null;
+            return false;
         }
 
-        result = null;
-        return false;
+        result = new PositiveInteger(value);
+        return true;
     }
 
     public int CompareTo(PositiveInteger? other) => other is null ? 1 : _value.CompareTo(other._value);

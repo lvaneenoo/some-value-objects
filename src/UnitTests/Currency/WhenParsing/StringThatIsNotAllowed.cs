@@ -8,6 +8,6 @@ public class StringThatIsNotAllowed
     [InlineData("AAA")]
     public void ShouldThrowArgumentOutOfRangeException(string s)
     {
-        Assert.Throws<ArgumentOutOfRangeException>(() => _ = Currency.Parse(s));
+        Assert.Throws<ArgumentOutOfRangeException>(() => _ = Currency.Parse(s, null));
     }
 }

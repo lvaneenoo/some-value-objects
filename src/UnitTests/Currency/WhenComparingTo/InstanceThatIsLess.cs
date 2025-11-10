@@ -8,8 +8,8 @@ public class InstanceThatIsLess
     [InlineData("GBP", "EUR")]
     public void ShouldReturnOne(string s1, string s2)
     {
-        var sut = Currency.Parse(s1);
+        var sut = Currency.Parse(s1, null);
 
-        Assert.Equal(1, sut.CompareTo(Currency.Parse(s2)));
+        Assert.Equal(1, sut.CompareTo(Currency.Parse(s2, null)));
     }
 }

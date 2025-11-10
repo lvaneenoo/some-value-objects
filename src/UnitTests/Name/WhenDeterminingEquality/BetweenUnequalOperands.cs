@@ -8,8 +8,8 @@ public class BetweenUnequalOperands
     [InlineData("A", "B")]
     public void ShouldReturnFalse(string s1, string s2)
     {
-        var sut = Name.Parse(s1);
+        var sut = Name.Parse(s1, null);
 
-        Assert.False(sut.Equals(Name.Parse(s2)));
+        Assert.False(sut.Equals(Name.Parse(s2, null)));
     }
 }

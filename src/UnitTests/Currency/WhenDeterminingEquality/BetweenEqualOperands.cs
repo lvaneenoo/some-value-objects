@@ -8,8 +8,8 @@ public class BetweenEqualOperands
     [InlineData("EUR", "EUR")]
     public void ShouldReturnTrue(string s1, string s2)
     {
-        var sut = Currency.Parse(s1);
+        var sut = Currency.Parse(s1, null);
 
-        Assert.True(sut.Equals(Currency.Parse(s2)));
+        Assert.True(sut.Equals(Currency.Parse(s2, null)));
     }
 }

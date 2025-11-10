@@ -16,6 +16,6 @@ public class StringThatHasInvalidFormat
     [MemberData(nameof(TestData))]
     public void ShouldThrowFormatException(string s)
     {
-        Assert.Throws<FormatException>(() => _ = Name.Parse(s));
+        Assert.Throws<FormatException>(() => _ = Name.Parse(s, null));
     }
 }

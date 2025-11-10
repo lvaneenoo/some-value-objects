@@ -8,6 +8,6 @@ public class StringThatIsAllowed
     [InlineData("EUR")]
     public void ShouldReturnInstance(string s)
     {
-        _ = Currency.Parse(s);
+        _ = Currency.Parse(s, null);
     }
 }

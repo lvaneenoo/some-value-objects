@@ -1,9 +1,12 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
 
 namespace Common;
 
-public sealed class CountryCode : IComparable<CountryCode>, IEquatable<CountryCode>
+public sealed class CountryCode : IComparable<CountryCode>, IEquatable<CountryCode>, IParsable<CountryCode>
 {
+    private const string Pattern = "^[A-Z]{2}$";
+
     private readonly string _value;
 
     private CountryCode(string value)
@@ -11,9 +14,9 @@ public sealed class CountryCode : IComparable<CountryCode>, IEquatable<CountryCo
         _value = value;
     }
 
-    public static CountryCode Parse(string s)
+    public static CountryCode Parse(string s, IFormatProvider? provider)
     {
-        if (!Regex.IsMatch(s, "^[A-Z]{2}$"))
+        if (!Regex.IsMatch(s, Pattern))
         {
             throw new FormatException();
         }
@@ -21,9 +24,11 @@ public sealed class CountryCode : IComparable<CountryCode>, IEquatable<CountryCo
         return new CountryCode(s);
     }
 
-    public static bool TryParse(string s, out CountryCode? result)
+    public static bool TryParse([NotNullWhen(true)] string? s,
+                                IFormatProvider? provider,
+                                [MaybeNullWhen(false)] out CountryCode result)
     {
-        if (!Regex.IsMatch(s, "^[A-Z]{2}$"))
+        if (s is null || !Regex.IsMatch(s, Pattern))
         {
             result = null;
             return false;

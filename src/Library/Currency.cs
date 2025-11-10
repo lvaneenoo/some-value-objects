@@ -1,9 +1,12 @@
+using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
 
 namespace Common;
 
-public sealed class Currency : IComparable<Currency>, IEquatable<Currency>
+public sealed class Currency : IComparable<Currency>, IEquatable<Currency>, IParsable<Currency>
 {
+    private const string Pattern = "^[A-Z]{3}$";
+
     private static readonly HashSet<string> AllowedValues =
     [
         "EUR",
@@ -18,9 +21,9 @@ public sealed class Currency : IComparable<Currency>, IEquatable<Currency>
         _value = value;
     }
 
-    public static Currency Parse(string s)
+    public static Currency Parse(string s, IFormatProvider? provider)
     {
-        if (!Regex.IsMatch(s, "^[A-Z]{3}$"))
+        if (!Regex.IsMatch(s, Pattern))
         {
             throw new FormatException();
         }
@@ -33,15 +36,11 @@ public sealed class Currency : IComparable<Currency>, IEquatable<Currency>
         return new Currency(s);
     }
 
-    public static bool TryParse(string s, out Currency? result)
+    public static bool TryParse([NotNullWhen(true)] string? s,
+                                IFormatProvider? provider,
+                                [MaybeNullWhen(false)] out Currency result)
     {
-        if (!Regex.IsMatch(s, "^[A-Z]{3}$"))
-        {
-            result = null;
-            return false;
-        }
-
-        if (!AllowedValues.Contains(s))
+        if (s is null || !Regex.IsMatch(s, Pattern) || !AllowedValues.Contains(s))
         {
             result = null;
             return false;

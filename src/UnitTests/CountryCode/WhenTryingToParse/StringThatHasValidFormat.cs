@@ -8,7 +8,7 @@ public class StringThatHasValidFormat
     [InlineData("AA")]
     public void ShouldCreateResult(string s)
     {
-        Assert.True(CountryCode.TryParse(s, out CountryCode? result));
+        Assert.True(CountryCode.TryParse(s, null, out CountryCode? result));
         Assert.NotNull(result);
     }
 }

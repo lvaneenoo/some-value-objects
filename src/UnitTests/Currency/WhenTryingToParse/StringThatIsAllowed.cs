@@ -8,7 +8,7 @@ public class StringThatIsAllowed
     [InlineData("EUR")]
     public void ShouldCreateResult(string s)
     {
-        Assert.True(Currency.TryParse(s, out Currency? result));
+        Assert.True(Currency.TryParse(s, null, out Currency? result));
         Assert.NotNull(result);
     }
 }

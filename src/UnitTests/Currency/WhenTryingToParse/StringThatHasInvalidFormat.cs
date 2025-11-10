@@ -10,7 +10,7 @@ public class StringThatHasInvalidFormat
     [InlineData("AAAA")]
     public void ShouldNotCreateResult(string s)
     {
-        Assert.False(Currency.TryParse(s, out Currency? result));
+        Assert.False(Currency.TryParse(s, null, out Currency? result));
         Assert.Null(result);
     }
 }

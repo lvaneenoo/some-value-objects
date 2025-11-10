@@ -11,7 +11,7 @@ public class StringThatHasInvalidFormat
     [InlineData("AAA")]
     public void ShouldNotCreateResult(string s)
     {
-        Assert.False(CountryCode.TryParse(s, out CountryCode? result));
+        Assert.False(CountryCode.TryParse(s, null, out CountryCode? result));
         Assert.Null(result);
     }
 }

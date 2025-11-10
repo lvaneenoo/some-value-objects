@@ -8,7 +8,7 @@ public class Instance
     public void ShouldReturnValue()
     {
         const string value = "AA";
-        var sut = CountryCode.Parse(value);
+        var sut = CountryCode.Parse(value, null);
 
         Assert.Equal(value, sut.ToString());
     }

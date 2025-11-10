@@ -8,7 +8,7 @@ public class OfInstance
     public void ShouldReturnHashCode()
     {
         const string value = "AA";
-        var sut = CountryCode.Parse(value);
+        var sut = CountryCode.Parse(value, null);
 
         Assert.Equal(value.GetHashCode(), sut.GetHashCode());
     }

@@ -11,6 +11,6 @@ public class StringThatHasInvalidFormat
     [InlineData("AAA")]
     public void ShouldThrowFormatException(string s)
     {
-        Assert.Throws<FormatException>(() => _ = CountryCode.Parse(s));
+        Assert.Throws<FormatException>(() => _ = CountryCode.Parse(s, null));
     }
 }

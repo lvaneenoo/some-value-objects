@@ -8,6 +8,6 @@ public class StringThatHasValidFormat
     [InlineData("A")]
     public void ShouldReturnInstance(string s)
     {
-        _ = Name.Parse(s);
+        _ = Name.Parse(s, null);
     }
 }

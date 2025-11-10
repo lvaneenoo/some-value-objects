@@ -8,7 +8,7 @@ public class Instance
     public void ShouldReturnValue()
     {
         const string value = "EUR";
-        var sut = Currency.Parse(value);
+        var sut = Currency.Parse(value, null);
 
         Assert.Equal(value, sut.ToString());
     }

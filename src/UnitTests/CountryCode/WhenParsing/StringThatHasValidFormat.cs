@@ -8,6 +8,6 @@ public class StringThatHasValidFormat
     [InlineData("AA")]
     public void ShouldReturnInstance(string s)
     {
-        _ = CountryCode.Parse(s);
+        _ = CountryCode.Parse(s, null);
     }
 }
