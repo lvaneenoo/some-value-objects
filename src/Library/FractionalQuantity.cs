@@ -2,7 +2,10 @@ using System.Diagnostics.CodeAnalysis;
 
 namespace Common;
 
-public readonly struct FractionalQuantity : IComparable<FractionalQuantity>, IEquatable<FractionalQuantity>
+public readonly struct FractionalQuantity
+    : IComparable<FractionalQuantity>,
+      IEquatable<FractionalQuantity>,
+      IFormattable
 {
     public static readonly FractionalQuantity Zero;
 
@@ -21,10 +24,14 @@ public readonly struct FractionalQuantity : IComparable<FractionalQuantity>, IEq
     }
 
     public int CompareTo(FractionalQuantity other) => _value.CompareTo(other._value);
+
     public bool Equals(FractionalQuantity other) => _value == other._value;
     public override bool Equals([NotNullWhen(true)] object? obj) => obj is FractionalQuantity other && Equals(other);
+
     public override int GetHashCode() => _value.GetHashCode();
+
     public override string ToString() => _value.ToString();
+    public string ToString(string? format, IFormatProvider? formatProvider) => _value.ToString(format, formatProvider);
 
     public static bool operator ==(FractionalQuantity a, FractionalQuantity b) => a.Equals(b);
     public static bool operator !=(FractionalQuantity a, FractionalQuantity b) => !(a == b);

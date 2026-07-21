@@ -5,6 +5,7 @@ namespace Common;
 public sealed class PositiveInteger
     : IComparable<PositiveInteger>,
       IEquatable<PositiveInteger>,
+      IFormattable,
       IParsable<PositiveInteger>
 {
     private readonly int _value;
@@ -23,9 +24,10 @@ public sealed class PositiveInteger
 
     public static PositiveInteger Parse(string s, IFormatProvider? provider) => FromInt32(int.Parse(s, provider));
 
-    public static bool TryParse([NotNullWhen(true)] string? s,
-                                IFormatProvider? provider,
-                                [MaybeNullWhen(false)] out PositiveInteger result)
+    public static bool TryParse(
+        [NotNullWhen(true)] string? s,
+        IFormatProvider? provider,
+        [MaybeNullWhen(false)] out PositiveInteger result)
     {
         if (!int.TryParse(s, out int value) || value <= 0)
         {
@@ -38,10 +40,14 @@ public sealed class PositiveInteger
     }
 
     public int CompareTo(PositiveInteger? other) => other is null ? 1 : _value.CompareTo(other._value);
+
     public bool Equals(PositiveInteger? other) => other is not null && _value == other._value;
     public override bool Equals(object? obj) => Equals(obj as PositiveInteger);
+
     public override int GetHashCode() => _value.GetHashCode();
+
     public override string ToString() => _value.ToString();
+    public string ToString(string? format, IFormatProvider? formatProvider) => _value.ToString(format, formatProvider);
 
     public static bool operator ==(PositiveInteger? a, PositiveInteger? b) => a is not null && a.Equals(b);
     public static bool operator !=(PositiveInteger? a, PositiveInteger? b) => !(a == b);

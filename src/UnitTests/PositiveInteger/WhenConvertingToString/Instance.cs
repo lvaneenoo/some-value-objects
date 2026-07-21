@@ -1,9 +1,19 @@
+using System.Globalization;
+
 using Common;
 
 namespace PositiveIntegerTests.WhenConvertingToString;
 
 public class Instance
 {
+    public static TheoryData<string?, IFormatProvider?> ValidInput { get; } = new()
+    {
+        { null, null },
+        { null, CultureInfo.CurrentCulture },
+        { "G", null },
+        { "G", CultureInfo.CurrentCulture }
+    };
+
     [Fact]
     public void ShouldReturnValue()
     {
@@ -11,5 +21,15 @@ public class Instance
         var sut = PositiveInteger.FromInt32(value);
 
         Assert.Equal(value.ToString(), sut.ToString());
+    }
+
+    [Theory]
+    [MemberData(nameof(ValidInput))]
+    public void Test(string? format, IFormatProvider? formatProvider)
+    {
+        const int value = 1;
+        var sut = PositiveInteger.FromInt32(value);
+
+        Assert.Equal(value.ToString(format, formatProvider), sut.ToString(format, formatProvider));
     }
 }
